@@ -1,0 +1,1 @@
+{"name":"iris-portfolio","private":true,"type":"module","scripts":{"dev":"node scripts/server.js","build":"node scripts/build.js","lint":"node --check main.js && node --check src/data/siteData.js && node --check scripts/server.js","test":"node --test scripts/data.test.js"},"dependencies":{"@radix-ui/colors":"^3.0.0"}}

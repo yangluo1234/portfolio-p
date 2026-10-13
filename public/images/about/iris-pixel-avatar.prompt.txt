@@ -1,0 +1,2 @@
+Generated with the built-in image_gen tool. Reference: user-supplied portrait.
+Prompt: Create a single pixel-art portrait avatar for Iris Luo’s portfolio header, preserving short dark hair tucked behind ears, sunglasses resting on her head, gentle closed-mouth smile, natural face proportions and dark blue crew-neck shirt. Restrained pixel art, stepped square edges, limited skin and blue-black palette, recognizable at header size. Head and shoulders centred, transparent background, no frame, text, badges, backdrop, chibi or exaggerated eyes.

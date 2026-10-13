@@ -1,0 +1,1 @@
+Built-in image_gen tool. Prompt: One simple symbolic pixel-art head-and-shoulders avatar with short dark hair, sunglasses on the head, navy shirt, flat peach face with two square eyes and tiny smile. Approximate silhouette, not a realistic likeness. Low-resolution square pixel edges, limited palette, transparent background, no text or frame. Clear at 48px.

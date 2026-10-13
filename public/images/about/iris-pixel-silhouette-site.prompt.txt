@@ -1,0 +1,1 @@
+Built-in image_gen edit. Preserve the existing featureless pixel silhouette and transparency. Recolour hair to #20333F, shirt to #435C66, glasses frames to #F47C66 and lenses to #80B8BC, face/neck to neutral #DDD8CB. Restrained flat palette matching the portfolio, no new facial features, text or objects.
