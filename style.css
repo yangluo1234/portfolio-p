@@ -3266,3 +3266,24 @@ body[data-page="home"] .footer-bottom { margin-top:0; padding-top:20px; }
 .cv-skill-group:nth-of-type(3) li { background:var(--pop-mint); }
 @media(max-width:600px) { .cv-cards { padding-block:24px 40px; } .cv-card-grid { gap:20px; } .cv-card-grid .cv-card { padding:22px; } .cv-card h2 { font-size:1.6rem; } .cv-contact-links { flex-direction:column; align-items:flex-start; } }
 @media(forced-colors:active) { .cv-card.cv-profile,.cv-card.cv-education,.cv-card.cv-experience,.cv-card.cv-skills,.cv-card.cv-languages { background:Canvas; border-color:CanvasText; box-shadow:none; } .cv-download,.cv-contact-links a,.cv-skill-group li { background:Canvas; color:CanvasText; border:1px solid CanvasText; box-shadow:none; } }
+
+/* Live work is a primary invitation, visible before opening a case study. */
+.live-project-button,
+.home-curated [data-card] .live-project-button {
+ display:inline-flex; align-items:center; justify-content:center; gap:20px;
+ min-height:48px; padding:12px 20px; border:1px solid #20333f;
+ border-radius:999px; background:#20333f; color:#fff;
+ font:400 1.1rem/1.2 var(--display-font); text-decoration:none;
+ box-shadow:0 4px 0 #20333f18; transition:background .2s ease,transform .2s ease;
+}
+.live-project-button > span { color:var(--pop-cyan); font-size:1.3rem; }
+.live-project-button:hover,.home-curated [data-card] .live-project-button:hover { background:#335668; color:#fff; text-decoration:none; transform:translateY(-2px); }
+.live-project-button:focus-visible { outline:3px solid #164f85; outline-offset:5px; }
+.project-card-actions { display:flex; align-items:center; justify-content:space-between; gap:16px; margin-top:20px; }
+.home-curated .supporting-projects .project-card-actions .project-year { padding:0; }
+.home-curated .collection-meta { align-items:center; }
+.case-header-actions { margin-block:20px 8px; }
+.demo-live-link { margin-top:24px; }
+@media(max-width:600px) { .live-project-button,.home-curated [data-card] .live-project-button { font-size:1rem; padding:12px 18px; gap:14px; } .project-card-actions { flex-wrap:wrap; } }
+@media(prefers-reduced-motion:reduce) { .live-project-button,.home-curated [data-card] .live-project-button { transition:none; } .live-project-button:hover,.home-curated [data-card] .live-project-button:hover { transform:none; } }
+@media(forced-colors:active) { .live-project-button,.home-curated [data-card] .live-project-button { background:ButtonFace; color:ButtonText; border-color:ButtonText; box-shadow:none; } }
