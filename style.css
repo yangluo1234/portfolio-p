@@ -3173,15 +3173,18 @@ h1,h2,h3 { font-synthesis:none; }
 @media(forced-colors:active) { .about-photography { background:Canvas; border-color:CanvasText; box-shadow:none; } .about-photography-heading p { color:CanvasText; } }
 
 /* Photography is a compact personal aside rather than the main About story. */
-.about-separated .about-photography { display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1.25fr); align-items:center; gap:28px; margin-top:28px; padding:24px; background:#e5edf0; box-shadow:none; }
+.about-separated .about-photography { display:grid; grid-template-columns:minmax(220px,.8fr) minmax(0,1.6fr); align-items:center; gap:28px; margin-top:28px; padding:24px; background:#e5edf0; box-shadow:none; }
 .about-separated .about-photography-heading { margin-bottom:0; }
 .about-separated .about-photography-heading h2 { font-size:1.65rem; }
 .about-separated .about-photography-heading p { font-size:.95rem; max-width:34ch; }
-.about-separated .about-photography-pair { grid-template-columns:1fr 1fr; gap:14px; }
+.about-separated .about-photography-pair { grid-template-columns:repeat(5,minmax(0,1fr)); gap:10px; }
+.about-separated .about-photography-pair img { aspect-ratio:3/2; height:auto; border-radius:8px; }
+.about-separated .about-photography-pair a { border-radius:8px; transition:transform .18s ease; }
+@media(hover:hover) and (prefers-reduced-motion:no-preference) { .about-separated .about-photography-pair a:hover { transform:translateY(-3px); } }
 @media(max-width:600px) {
  .about-separated .about-photography { grid-template-columns:1fr; gap:18px; padding:20px; }
  .about-separated .about-photography-heading h2 { font-size:1.5rem; }
- .about-separated .about-photography-pair { gap:12px; }
+ .about-separated .about-photography-pair { grid-template-columns:repeat(3,minmax(0,1fr)); gap:10px; }
 }
 
 /* Home is an introduction; Work is a separate, directly scannable gallery. */
