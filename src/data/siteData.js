@@ -296,14 +296,14 @@ export const projectData = [
     "detailLabel": "Planning around a smaller next step",
     "demoHeading": "Watch the planning flow",
     "sections": {
-      "introduction": "I designed DoItNow to help students break a large task into steps they can adjust. In Figma, I connected goal entry, plan editing, task completion and activity tracking into a prototype, then revised the progress display and heatmap after qualitative feedback.",
+      "introduction": "A task-planning concept for students who find it hard to start. I designed and tested a connected Figma prototype, then refined clarity, mobile use and control over suggested plans.",
       "role": "User interview, interface design, interactive prototype and qualitative testing.",
       "team": "Independent project",
       "duration": "",
       "tools": "Figma · Interactive prototyping",
       "context": "A 2025 Human Lens project focused on procrastination among university students and young professionals, with research centred on a university student.",
       "problem": "Large or unclear tasks can make it difficult to start. The project frames a cycle of fear, delay, stress and guilt, and explores how a smaller next action can offer structure.",
-      "research": "One in-depth interview with a university student informed the direction. A usability test and a 5-second test explored clarity, layout and first impressions; the presentation does not specify the total number of test participants.",
+      "research": "One in-depth interview with a university student informed the direction. Initial usability testing involved three students, a 5-second test involved three users, and a later round gathered feedback from five users. Groups may overlap across rounds.",
       "interaction": "Watch the walkthrough to follow the task flow. This portfolio provides a video demonstration rather than a connected AI service.",
       "demonstration": "Prototype walkthrough: add a goal, edit the suggested steps, complete a task and check activity. The proposed AI flow is simulated in Figma.",
       "prototypeVideo": "public/videos/doitnow-walkthrough.mp4",
@@ -323,74 +323,109 @@ export const projectData = [
       "reflection": "The hardest part was finding a way to motivate people without pressure. The project reinforced that usability and emotion need to be considered together, and that design improves through testing, listening and iteration.",
       "contentBlocks": [
         {
-          "title": "Why start with smaller steps?",
-          "navLabel": "Research",
+          "title": "A smaller next step.",
+          "navLabel": "Direction",
           "copy": [
-            "One student interview pointed to stress around large, unclear tasks. I used this to shape a planning flow that starts with a manageable next action and lets the student adjust the plan.",
-            "Usability and 5-second testing raised questions about the proposed AI feature, how to read the heatmap and the visibility of progress. The recorded feedback does not give a complete participant count."
+            "A student interview highlighted a starting barrier: large, unclear tasks feel overwhelming."
           ],
+          "decision": {
+            "Finding": "Unclear tasks make starting harder.",
+            "Design response": "Offer small, editable steps."
+          },
+          "flowSteps": [
+            "Access",
+            "Create task",
+            "Suggested plan",
+            "Edit / confirm",
+            "Track progress",
+            "Complete"
+          ],
+          "layout": "direction"
+        },
+        {
+          "title": "Test. Listen. Refine.",
+          "navLabel": "Testing",
+          "copy": [],
           "supportingMedia": {
             "image": "public/images/projects/doitnow/testing-feedback.webp",
             "alt": "Original qualitative testing feedback and suggested changes.",
             "caption": "Original course feedback slide. Open the image at full size to read the source."
-          }
+          },
+          "metrics": [
+            {
+              "value": "3",
+              "label": "Initial usability participants",
+              "note": "Task flow · 5–10 minutes each"
+            },
+            {
+              "value": "3",
+              "label": "5-second test participants",
+              "note": "First impressions and clarity"
+            },
+            {
+              "value": "5",
+              "label": "Later-round participants",
+              "note": "3 classmates + 2 outside class"
+            }
+          ],
+          "detail": "Participant groups may overlap across rounds. Heuristic and accessibility reviews supported the testing.",
+          "layout": "testing"
         },
         {
-          "title": "Let the user change the plan",
-          "navLabel": "Editable plans",
-          "copy": [
-            "The prototype lets someone regenerate a plan or edit a step’s name, duration and date before confirming it. Guest access provides a route without an account.",
-            "This gives the user control over a proposed AI plan. Whether AI adds value compared with manual task breakdown remains an open question."
-          ],
+          "title": "Suggestions, with room to change.",
+          "navLabel": "Plan control",
+          "copy": [],
           "gallery": [
             {
               "src": "public/images/projects/doitnow/demo-poster.webp",
               "alt": "DoItNow suggested task plan with editable steps.",
-              "caption": "A suggested plan is a starting point: individual steps can be edited before confirmation."
+              "caption": "Adjust the suggestion before confirming."
             }
-          ]
+          ],
+          "decision": {
+            "Feedback": "Users wanted plans that fit their circumstances.",
+            "Refinement": "Edit the step, duration or date. Regenerate the suggestion."
+          },
+          "layout": "control"
         },
         {
-          "title": "Make activity cells easier to read",
+          "title": "Make activity easier to read.",
           "navLabel": "Activity feedback",
-          "copy": [
-            "The heatmap was difficult to interpret, and feedback described the mobile cells as small. I separated the cells and revised the colour contrast.",
-            "A follow-up test should check how people read the revised heatmap and whether the touch targets are large enough at device size."
-          ],
+          "copy": [],
           "comparison": {
             "layout": "side-by-side",
             "before": "public/images/projects/doitnow/heatmap-before.webp",
             "after": "public/images/projects/doitnow/heatmap-after.webp",
             "beforeAlt": "Original activity heatmap.",
             "afterAlt": "Revised activity heatmap with a changed layout and contrast."
-          }
+          },
+          "decision": {
+            "Feedback": "Small cells were difficult to read and tap on a phone.",
+            "Refinement": "More spacing, revised contrast and larger touch areas."
+          },
+          "layout": "revision"
         },
         {
-          "title": "Show progress in three ways",
+          "title": "Make progress visible.",
           "navLabel": "Progress cues",
-          "copy": [
-            "I changed the dark progress fill to yellow and added a percentage and completed-step count. The intention is to make progress readable without relying on colour alone."
-          ],
+          "copy": [],
           "gallery": [
             {
               "src": "public/images/projects/doitnow/plan-before.webp",
               "alt": "Original task plan with a dark progress bar.",
-              "caption": "Before — weak emphasis on progress."
+              "caption": "Before · Progress blends into the background."
             },
             {
               "src": "public/images/projects/doitnow/plan-after.webp",
               "alt": "Revised task plan with yellow progress fill, percentage and step count.",
-              "caption": "After — colour, percentage and completed steps communicate progress together."
+              "caption": "After · Colour, percentage and step count."
             }
-          ]
-        },
-        {
-          "title": "What I would test next",
-          "navLabel": "Next tests",
-          "copy": [
-            "This is an interactive Figma prototype; the proposed AI planning is simulated. It has not established a reduction in procrastination.",
-            "I would compare suggested planning with manual breakdown, test the revised heatmap on a phone, and ask whether activity tracking adds pressure for the people it is meant to support."
-          ]
+          ],
+          "decision": {
+            "Feedback": "The dark progress bar blended into the background.",
+            "Refinement": "Yellow fill, a percentage and a completed-step count."
+          },
+          "layout": "revision"
         }
       ]
     },
@@ -834,6 +869,7 @@ export const projectData = [
         },
         {
           "title": "Behind the silver layer",
+          "galleryLayout": "compact",
           "copy": [
             "Three reveal illustrations from the original website, paired with short encouraging messages."
           ],
