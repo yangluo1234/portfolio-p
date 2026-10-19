@@ -3700,3 +3700,136 @@ body[data-page="home"] #footer .footer-bottom { border-top:1px solid var(--site-
 .product-cover-composition { height:auto; min-height:0; padding-block:20px 32px; align-items:center; }
 @media(max-width:800px) { .product-motion-window { width:185px; height:auto; } .product-still-window { width:165px; } }
 @media(max-width:600px) { .product-motion-window { width:170px; height:auto; } .product-cover-composition { height:auto; } .device-shell { border-radius:22px; padding:21px 5px 9px; } }
+
+/* Stable internal entry plus an explicitly separate live-site destination. */
+.card-destinations { display:flex; align-items:flex-start; justify-content:flex-end; flex-wrap:wrap; gap:16px; }
+.project-detail-button { display:inline-flex; align-items:center; justify-content:center; gap:16px; padding:13px 20px; min-height:48px; border:1px solid #46606a80; border-radius:999px; color:var(--primary,#202f36); font:500 1rem/1.25 var(--sans); text-decoration:none; transition:background .2s,border-color .2s; }
+.project-detail-button:hover { background:#ffffff80; border-color:#f47c66; }
+.project-detail-button:focus-visible { outline:2px solid #a84330; outline-offset:4px; }
+.card-live-destination { display:flex; flex-direction:column; align-items:center; gap:6px; }
+.card-live-destination small { color:var(--secondary); font:400 .7rem/1.4 var(--sans); }
+.home-curated .card-destinations .live-project-button { margin:0; font-size:1rem; padding:13px 20px; min-height:48px; }
+.home-curated .project-card-actions,.home-curated .collection-meta { align-items:flex-start; }
+.home-curated .collection-meta { flex-wrap:wrap; }
+@media(max-width:600px) { .card-destinations { justify-content:flex-start; gap:12px; } .project-detail-button { padding:12px 16px; font-size:.9rem; } .home-curated .card-destinations .live-project-button { padding:12px 16px; font-size:.9rem; } }
+
+/* Live experience first; project details use a quieter text entry. */
+.card-destinations { align-items:flex-start; gap:24px; }
+.project-detail-button { border:0; border-radius:0; background:transparent; padding:13px 0; min-height:48px; text-decoration:underline; text-decoration-thickness:1px; text-underline-offset:6px; }
+.project-detail-button:hover { background:transparent; text-decoration-color:#f47c66; }
+@media(max-width:600px) { .card-destinations { gap:20px; } .project-detail-button { padding:12px 0; } }
+
+/* Card actions span the card: live entry bottom-left, details bottom-right. */
+.home-curated .project-card-actions,
+.home-curated .collection-meta { display:grid; grid-template-columns:minmax(0,1fr); gap:14px; }
+.home-curated .project-card-actions .card-destinations,
+.home-curated .collection-meta .card-destinations { width:100%; display:flex; justify-content:space-between; align-items:flex-start; gap:20px; }
+.home-curated .card-destinations .live-project-button { min-height:38px; padding:9px 14px; border-radius:5px; font-size:.9rem; line-height:1.25; gap:16px; box-shadow:none; }
+.home-curated .card-live-destination { align-items:flex-start; gap:5px; }
+.home-curated .card-destinations .project-detail-button { margin-left:auto; min-height:38px; padding:9px 0; font-size:.9rem; }
+@media(max-width:600px) {
+ .home-curated .card-destinations .live-project-button { min-height:42px; padding:11px 14px; border-radius:5px; font-size:.9rem; }
+ .home-curated .card-destinations .project-detail-button { min-height:42px; padding:11px 0; }
+}
+
+/* Clear legacy project-row grid placement inside the card action area. */
+.home-curated .project-card-actions > .project-year,
+.home-curated .collection-meta > span:first-child { grid-column:1; grid-row:1; justify-self:start; text-align:left; padding:0; margin:0; }
+.home-curated .project-card-actions > .card-destinations,
+.home-curated .collection-meta > .card-destinations { grid-column:1; grid-row:2; min-width:0; }
+
+/* Compact featured composition: devices beside a readable project introduction. */
+.home-curated .lead-product.showcase-feature { display:grid; grid-template-columns:minmax(0,1.1fr) minmax(0,1fr); align-items:center; gap:clamp(28px,4vw,64px); padding:clamp(28px,3vw,48px); }
+.home-curated .showcase-feature .product-cover-composition { min-width:0; padding:0; gap:28px; justify-content:center; }
+.home-curated .showcase-feature .showcase-caption { display:flex; flex-direction:column; align-items:flex-start; gap:28px; padding:0; }
+.home-curated .showcase-feature h3 { font-size:clamp(2.5rem,4.2vw,4rem); line-height:1.05; margin:12px 0 20px; }
+.home-curated .showcase-feature .showcase-caption p { max-width:30ch; font-size:clamp(1.05rem,1.5vw,1.3rem); line-height:1.5; }
+.home-curated .showcase-feature .card-destinations { justify-content:flex-start; }
+.home-curated .showcase-feature .project-detail-button { margin:0; font-size:1.15rem; padding:12px 0; gap:24px; text-decoration-thickness:1px; }
+.home-curated .showcase-feature .project-detail-button span { color:var(--detail-accent-ink); font-size:1.4em; }
+.home-curated .showcase-feature .product-motion-window { width:190px; }
+.home-curated .showcase-feature .product-still-window { width:170px; }
+@media(max-width:900px) {
+ .home-curated .lead-product.showcase-feature { gap:28px; }
+ .home-curated .showcase-feature .product-motion-window { width:155px; }
+ .home-curated .showcase-feature .product-still-window { width:140px; }
+ .home-curated .showcase-feature .product-cover-composition { gap:16px; }
+}
+@media(max-width:700px) {
+ .home-curated .lead-product.showcase-feature { grid-template-columns:1fr; padding:24px; gap:28px; }
+ .home-curated .showcase-feature .product-still-window { display:block; }
+ .home-curated .showcase-feature .showcase-caption { gap:14px; }
+ .home-curated .showcase-feature h3 { font-size:2.5rem; margin-bottom:12px; }
+}
+@media(max-width:380px) { .home-curated .showcase-feature .product-motion-window { width:135px; } .home-curated .showcase-feature .product-still-window { width:120px; } }
+
+/* Original entry screens complement the flow without becoming another cover. */
+.doitnow-story .case-layout-direction .screen-gallery { grid-template-columns:repeat(2,minmax(0,190px)); gap:28px; margin-top:28px; align-items:start; }
+.doitnow-story .case-layout-direction .screen-gallery figure { margin:0; }
+.doitnow-story .case-layout-direction .screen-gallery .media { aspect-ratio:auto; height:auto; border:0; background:transparent; margin:0; }
+.doitnow-story .case-layout-direction .screen-gallery img { display:block; width:100%; height:auto; }
+.doitnow-story .case-layout-direction .screen-gallery figcaption { font-size:.8rem; line-height:1.5; }
+
+/* A consistent pair of supporting projects without staggered empty areas. */
+.home-curated .supporting-projects { grid-template-columns:repeat(2,minmax(0,1fr)); gap:28px; align-items:start; }
+.home-curated .supporting-projects .project-row:nth-child(n) { grid-column:auto; margin:0; min-height:0; padding:24px; }
+.home-curated .supporting-projects .inline-thumbnail { width:100%; aspect-ratio:1.6; margin-bottom:20px; }
+.home-curated .supporting-projects .showcase-project-link { margin:0; }
+.home-curated .supporting-projects .project-card-actions { margin-top:16px; gap:10px; }
+.home-curated .supporting-projects .project-tool-labels { opacity:1; transform:none; min-height:0; margin-top:16px; gap:8px; }
+.home-curated .supporting-projects .project-tool-labels li { font:400 .75rem/1.3 var(--sans); padding:4px 8px; border-radius:3px; box-shadow:none; background:#ffffff60; }
+@media(max-width:700px) { .home-curated .supporting-projects { grid-template-columns:1fr; } .home-curated .supporting-projects .project-row:nth-child(n) { padding:20px; } }
+
+/* Unified tool labels: restrained technical colours, revealed on interaction. */
+.home-curated [data-card] .project-tool-labels { opacity:0; transform:translateY(4px); min-height:0; margin-top:14px; gap:8px; transition:opacity .18s ease,transform .18s ease; }
+.home-curated [data-card]:hover .project-tool-labels,
+.home-curated [data-card]:focus-within .project-tool-labels { opacity:1; transform:none; }
+.home-curated [data-card] .project-tool-labels li { --sticker:#d2deda; background:var(--sticker); color:#233c42; border:1px solid #48626630; border-radius:3px; box-shadow:none; font:500 .75rem/1.3 var(--sans); padding:5px 9px; }
+.home-curated [data-card] .project-tool-labels li[data-tone="mint"] { --sticker:#b7cec2; }
+.home-curated [data-card] .project-tool-labels li[data-tone="blue"] { --sticker:#b9cbd4; }
+.home-curated [data-card] .project-tool-labels li[data-tone="cyan"] { --sticker:#b1cbc9; }
+.home-curated [data-card] .project-tool-labels li[data-tone="coral"] { --sticker:#d8b39d; }
+.home-curated [data-card] .project-tool-labels li[data-tone="peach"] { --sticker:#cfbda3; }
+@media(hover:none),(pointer:coarse) { .home-curated [data-card] .project-tool-labels { opacity:1; transform:none; } }
+@media(prefers-reduced-motion:reduce) { .home-curated [data-card] .project-tool-labels { transform:none; transition:none; } }
+@media(forced-colors:active) { .home-curated [data-card] .project-tool-labels li { background:Canvas; color:CanvasText; border-color:CanvasText; } }
+
+/* Shared primary-action language with View my work and Say hello. */
+.live-project-button,
+.home-curated [data-card] .live-project-button,
+.home-curated .card-destinations .live-project-button { min-height:48px; padding:14px 24px; gap:14px; border:0; border-radius:999px; font:500 1rem/1.25 var(--sans); box-shadow:none; }
+@media(forced-colors:none) {
+ .live-project-button,.home-curated [data-card] .live-project-button,.home-curated .card-destinations .live-project-button { background:#00786e; color:#fff; }
+ .live-project-button:hover,.home-curated [data-card] .live-project-button:hover,.home-curated .card-destinations .live-project-button:hover { background:#005d56; color:#fff; transform:none; }
+ .live-project-button > span,.home-curated [data-card] .live-project-button > span { color:var(--detail-accent,#f47c66); }
+}
+
+/* A smaller live action retains the shared primary-button styling. */
+.live-project-button,
+.home-curated [data-card] .live-project-button,
+.home-curated .card-destinations .live-project-button { min-height:40px; padding:10px 18px; gap:10px; font-size:.9rem; }
+.live-project-button > span { font-size:1.1rem; }
+@media(pointer:coarse) { .live-project-button,.home-curated [data-card] .live-project-button,.home-curated .card-destinations .live-project-button { min-height:44px; } }
+
+/* Footer invitation is larger than the repeated live-project actions. */
+#footer .contact > .intro-work-link { min-height:54px; padding:16px 28px; gap:18px; font-size:1.1rem; }
+.live-project-button,
+.home-curated [data-card] .live-project-button,
+.home-curated .card-destinations .live-project-button { min-height:36px; padding:8px 14px; gap:9px; font-size:.85rem; line-height:1.2; }
+.live-project-button > span,.home-curated [data-card] .live-project-button > span { font-size:1rem; }
+@media(pointer:coarse) { .live-project-button,.home-curated [data-card] .live-project-button,.home-curated .card-destinations .live-project-button { min-height:44px; } }
+
+/* Give the landing action a central, more prominent position. */
+.type-landing .type-action { display:grid; grid-template-columns:minmax(0,1fr) auto minmax(0,1fr); padding-left:0; gap:28px; margin-top:36px; }
+.type-landing .type-action p { grid-column:1; margin-left:24%; }
+.type-landing .type-action .intro-work-link { grid-column:2; justify-self:center; margin:0; min-height:56px; padding:17px 30px; gap:20px; font-size:1.15rem; }
+@media(max-width:700px) {
+ .type-landing .type-action { grid-template-columns:1fr; gap:22px; margin-top:28px; }
+ .type-landing .type-action p { grid-column:1; margin-left:5%; }
+ .type-landing .type-action .intro-work-link { grid-column:1; justify-self:center; font-size:1.05rem; min-height:52px; padding:15px 26px; }
+}
+
+/* Offset the landing action slightly right of centre. */
+@media(min-width:701px) {
+ .type-landing .type-action { grid-template-columns:minmax(0,1.25fr) auto minmax(0,.75fr); }
+}

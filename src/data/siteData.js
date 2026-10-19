@@ -340,7 +340,19 @@ export const projectData = [
             "Track progress",
             "Complete"
           ],
-          "layout": "direction"
+          "layout": "direction",
+          "gallery": [
+            {
+              "src": "public/images/projects/doitnow/welcome-home.webp",
+              "alt": "DoItNow home screen with Get Started, Sign In and Continue without account options.",
+              "caption": "Entry · Start, sign in, or continue without an account."
+            },
+            {
+              "src": "public/images/projects/doitnow/onboarding.webp",
+              "alt": "DoItNow welcome screen introducing task breakdown, progress tracking and habits.",
+              "caption": "Introduction · Explain the main features before task creation."
+            }
+          ]
         },
         {
           "title": "Test. Listen. Refine.",
