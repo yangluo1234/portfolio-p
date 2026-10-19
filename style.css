@@ -3833,3 +3833,9 @@ body[data-page="home"] #footer .footer-bottom { border-top:1px solid var(--site-
 @media(min-width:701px) {
  .type-landing .type-action { grid-template-columns:minmax(0,1.25fr) auto minmax(0,.75fr); }
 }
+
+/* Restore the landing action to the right of the supporting introduction. */
+.type-landing .type-action { display:flex; justify-content:space-between; align-items:center; padding-left:12%; gap:24px; }
+.type-landing .type-action p { margin:0; }
+.type-landing .type-action .intro-work-link { margin:0 0 0 auto; }
+@media(max-width:700px) { .type-landing .type-action { padding-left:5%; flex-wrap:wrap; gap:20px; } }
