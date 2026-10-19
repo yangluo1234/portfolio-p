@@ -74,11 +74,11 @@ function workCategory(p) {
   return p.type === "product" ? "uiux" : p.id === "food-court-icons" ? "visual" : "web";
 }
 function home() {
-  return `<div class="home-curated landing-page"><section class="hero section-shell home-recruitment-hero home-identity-hero"><div class="intro-canvas"><div class="home-identity-portrait"><img class="heatmap-portrait" src="public/images/about/iris-heatmap-portrait.svg" alt="Heatmap squares gather into my pixel portrait, with short hair and coral glasses" width="352" height="152" decoding="async" fetchpriority="high"></div><div class="home-identity-copy"><h1>Hi, I’m Iris.</h1><p class="intro-welcome">I’m a UI/UX designer based in Melbourne.<br>I design interfaces and build interactive websites.</p><a class="intro-work-link" href="#/work">View my work <span aria-hidden="true">↗</span></a></div></div></section></div>`;
+  return `<div class="home-curated landing-page"><section class="hero section-shell home-recruitment-hero home-identity-hero"><div class="intro-canvas"><div class="home-identity-portrait"><img class="heatmap-portrait" src="public/images/about/iris-heatmap-portrait.svg" alt="Heatmap squares gather into my pixel portrait, with short hair and coral glasses" width="352" height="152" decoding="async" fetchpriority="high"></div><div class="home-identity-copy"><h1>Hi, I’m Iris.</h1><p class="intro-capability">I design interfaces and build<br class="hero-desktop-break"> interactive websites.</p><p class="intro-location">UI/UX designer based in Melbourne.</p><a class="intro-work-link" href="#/work">View my work <span aria-hidden="true">↗</span></a></div></div></section></div>`;
 }
 function workPage() {
   const sections = resolveHomeSections(projects);
-  return `<div class="home-curated work-page" data-filter="all"><header class="work-page-heading section-shell"><h1>Work.</h1></header><div id="work-index" class="work-filters section-shell" role="group" aria-label="Filter projects">${[["all","All projects"],["uiux","UI/UX Design"],["web","Web Development"],["visual","Graphic Design"]].map(([category,label]) => `<button type="button" data-work-filter="${category}" aria-pressed="${category === "all"}" aria-controls="work play">${label}</button>`).join("")}</div>${sections.map(homeSection).join("")}</div>`;
+  return `<div class="home-curated work-page" data-filter="all"><header class="work-page-heading section-shell"><h1>Work.</h1></header><div id="work-index" class="work-filters section-shell" role="group" aria-label="Filter projects">${[["all","All projects"],["uiux","UI/UX Design"],["web","Web Development"],["visual","Visual Design"]].map(([category,label]) => `<button type="button" data-work-filter="${category}" aria-pressed="${category === "all"}" aria-controls="work play">${label}</button>`).join("")}</div><section class="web-project-grid section-shell" aria-label="Web development projects" hidden></section>${sections.map(homeSection).join("")}</div>`;
 }
 
 function luckyScratchCover() {
@@ -244,9 +244,20 @@ function bind(root, p) {
   requestAnimationFrame(updateBackToTop);
   const iconDemo = $(".icon-demo", root);
   let iconAudio = null;
+  const webGrid = $(".web-project-grid", root);
+  const webCardHomes = new Map([...root.querySelectorAll('[data-work-category="web"]')].map(card => {
+    const marker = document.createComment("project position");
+    card.before(marker);
+    return [card, marker];
+  }));
   const applyWorkCategory = category => {
     if (!$(".work-page", root)) return;
     $(".home-curated", root).dataset.filter = category;
+    webCardHomes.forEach((marker, card) => {
+      if (category === "web") webGrid.append(card);
+      else marker.after(card);
+    });
+    webGrid.hidden = category !== "web";
     const cards = [...root.querySelectorAll("[data-work-category]")];
     cards.forEach(card => { card.hidden = category !== "all" && card.dataset.workCategory !== category; });
     root.querySelectorAll(".home-section").forEach(section => {
@@ -256,7 +267,7 @@ function bind(root, p) {
       all: ["Work", "Interface prototypes and a coded web narrative."],
       uiux: ["UI/UX Design", "Interface prototypes: task planning and place-based stories."],
       web: ["Web Development", "Coded experiences that respond to scrolling and touch."],
-      visual: ["Graphic Design", "Illustration brought to life with motion and sound."]
+      visual: ["Visual Design", "Illustration brought to life with motion and sound."]
     };
     root.querySelectorAll("[data-work-filter]").forEach(button => button.setAttribute("aria-pressed", String(button.dataset.workFilter === category)));
     const heading = $("#work .curated-section-heading", root);
@@ -266,7 +277,7 @@ function bind(root, p) {
     }
     const playHeading = $("#play .curated-section-heading", root);
     if (playHeading) {
-      $("h2", playHeading).textContent = category === "web" ? "Try it in the browser" : category === "visual" ? "Graphic Design" : "Graphics & creative coding";
+      $("h2", playHeading).textContent = category === "web" ? "Try it in the browser" : category === "visual" ? "Visual Design" : "Graphics & creative coding";
       $("p", playHeading).textContent = category === "visual" ? "Illustration brought to life with motion and sound." : "Built for the browser. Try the live projects or explore how they work.";
     }
     if (category !== "all" && category !== "visual") iconAudio?.pause();
@@ -648,6 +659,12 @@ function render() {
     main.focus({ preventScroll: true });
   }
   navigationId++;
+  // Hash navigation and browser history can restore the old scroll after render.
+  // Reset once more after layout, only if this is still the current page.
+  const renderedNavigation = navigationId;
+  requestAnimationFrame(() => {
+    if (navigationId === renderedNavigation) window.scrollTo({ top: 0, left: 0, behavior: "instant" });
+  });
   if (pendingProjectTransition?.hash === hash && p) startProjectOpening();
   else pendingProjectTransition = null;
 }
@@ -732,5 +749,45 @@ document.addEventListener("click", (e) => {
   };
   location.hash = link.hash;
 });
+if ("scrollRestoration" in history) history.scrollRestoration = "manual";
 window.addEventListener("hashchange", render);
 render();
+
+// Keep the system arrow and native link/text cursors; cells are decorative only.
+const pixelPointer = matchMedia("(hover: hover) and (pointer: fine)");
+const pixelContrast = matchMedia("(forced-colors: active)");
+const pixelEffects = new Set();
+const pixelExcluded = 'input,textarea,select,[contenteditable]:not([contenteditable="false"]),video,audio,canvas';
+function pixelEffect(event, trail = false) {
+  if (!pixelPointer.matches || reduced.matches || pixelContrast.matches || event.pointerType !== "mouse" || event.target.closest(pixelExcluded)) return;
+  if (pixelEffects.size >= 10) return;
+  const cell = document.createElement("span");
+  cell.className = trail ? "pixel-click-cell pixel-shadow-cell" : "pixel-click-cell";
+  cell.setAttribute("aria-hidden", "true");
+  cell.style.left = `${event.clientX}px`;
+  cell.style.top = `${event.clientY}px`;
+  document.body.append(cell);
+  pixelEffects.add(cell);
+  const animation = cell.animate([
+    { opacity:trail ? .3 : .65, transform:"translate(-50%,-50%) scale(1)" },
+    { opacity:0, transform:`translate(-50%,-50%) scale(${trail ? .55 : 1.25})` }
+  ], { duration:trail ? 190 : 440, easing:"ease-out" });
+  animation.finished.finally(() => { cell.remove(); pixelEffects.delete(cell); });
+}
+let lastPixelMove = 0;
+document.addEventListener("pointermove", event => {
+  if (event.timeStamp - lastPixelMove < 28) return;
+  lastPixelMove = event.timeStamp;
+  pixelEffect(event, true);
+}, { passive:true });
+document.addEventListener("pointerdown", event => {
+  if (event.button === 0) pixelEffect(event);
+});
+function clearPixelEffects() {
+  pixelEffects.forEach(cell => cell.remove());
+  pixelEffects.clear();
+}
+window.addEventListener("blur", clearPixelEffects);
+reduced.addEventListener("change", clearPixelEffects);
+pixelPointer.addEventListener("change", clearPixelEffects);
+pixelContrast.addEventListener("change", clearPixelEffects);

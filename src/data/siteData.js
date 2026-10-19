@@ -65,7 +65,7 @@ export const site = {
       "doitnow": "Mobile Product Design | Figma | 2025",
       "watching-the-wait": "Interactive Web Experience | 2026",
       "mapped-in-memory": "Collaborative AR App Concept | Team Project | 2025",
-      "food-court-icons": "Icon System | Visual Design | 2024"
+      "food-court-icons": "Icon design & illustration | Visual Design | 2024"
     }
   },
   "about": {
@@ -678,7 +678,7 @@ export const projectData = [
       "Front-end"
     ],
     "year": "2024",
-    "role": "Icon system · Visual design · Web presentation",
+    "role": "Icon design & illustration · Interactive web presentation",
     "background": "#E6DDEF",
     "accent": "#7459A5",
     "liveUrl": "https://food-icons.netlify.app/",

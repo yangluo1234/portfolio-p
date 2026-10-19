@@ -3015,7 +3015,8 @@ body::before { background:radial-gradient(ellipse at 90% 5%,#dae5e840,transparen
 /* Unframed introduction, with a rounded display face and a quiet reading face. */
 @font-face { font-family:"Cal Sans"; src:url("public/fonts/cal-sans.ttf") format("truetype"); font-weight:400; font-style:normal; font-display:swap; }
 @font-face { font-family:"DM Sans"; src:url("public/fonts/dm-sans-latin.woff2") format("woff2"); font-weight:100 900; font-style:normal; font-display:swap; }
-:root { --display-font:"Cal Sans",Arial,sans-serif; --sans:"DM Sans",Arial,sans-serif; }
+@font-face { font-family:"Inter"; src:url("public/fonts/inter-variable.woff2") format("woff2"); font-weight:100 900; font-style:normal; font-display:swap; }
+:root { --display-font:"Inter",Arial,sans-serif; --sans:"Inter",Arial,sans-serif; }
 body { font-family:var(--sans); }
 h1,h2,h3 { font-synthesis:none; }
 .intro-canvas { border:0; border-radius:0; background:transparent; padding:22px 28px 24px; }
@@ -3346,3 +3347,62 @@ body[data-page="home"] .footer-bottom { margin-top:0; padding-top:20px; }
  .about-building .intro-work-link,.about-bio .intro-work-link { background:#00786e; color:#fff; }
  .about-building .intro-work-link:hover,.about-bio .intro-work-link:hover { background:#005d56; color:#fff; }
 }
+
+/* Inter: a neutral grotesk for clear interface typography and precise headings. */
+body { font-optical-sizing:auto; }
+.home-curated .intro-canvas h1,
+.work-page-heading h1,.about-refresh-heading h1,.contact-page-copy h1,
+.case-heading h1,.cv-compact-header h1 { font-weight:650; letter-spacing:-.045em; }
+.home-curated .showcase-feature h3,
+.home-curated .supporting-projects .project-info h3,
+.home-curated .collection-heading h3,
+.about-note h2,.about-photography-heading h2,
+.about-separated .about-photography-heading h2,
+.cv-card h2,.cv-card h3,.contact h2,
+.case-section h2,.case-section h3 { font-weight:600; letter-spacing:-.025em; }
+.intro-work-link,.live-project-button,.home-curated [data-card] .live-project-button,
+.cv-download,.contact-form button,.project-tool-labels li { font-weight:550; }
+
+/* Pixel wordmark echoes the portrait; interface text stays in Inter. */
+@font-face { font-family:"Pixelify Sans"; src:url("public/fonts/pixelify-sans-variable.ttf") format("truetype"); font-weight:400 700; font-style:normal; font-display:swap; }
+.personal-wordmark .wordmark-first,.personal-wordmark .wordmark-last { font:500 27px/1 "Pixelify Sans",monospace; letter-spacing:0; }
+@media(max-width:600px) { .personal-wordmark .wordmark-first,.personal-wordmark .wordmark-last { font-size:24px; } }
+
+/* Keep native cursors; decorative cells appear only during movement and clicks. */
+.pixel-click-cell { position:fixed; width:14px; height:14px; border-radius:1px; z-index:10000; pointer-events:none; background:linear-gradient(135deg,#b5e9c8c7,#60bd8a99); border:1px solid #4d936f80; box-shadow:2px 3px 7px #34775230; }
+.pixel-shadow-cell { width:12px; height:12px; border-color:transparent; box-shadow:2px 3px 6px #34775226; }
+@media(prefers-reduced-motion:reduce),(forced-colors:active) { .pixel-click-cell { display:none; } }
+
+/* Landing hierarchy: a stronger introduction without adding more content. */
+.landing-page .intro-canvas { width:100%; max-width:960px; }
+.home-curated.landing-page .home-identity-hero { padding-block:32px 56px; }
+.landing-page .intro-canvas .home-identity-portrait { margin-bottom:20px; }
+.landing-page .intro-canvas .heatmap-portrait { width:min(100%,400px); }
+.home-curated.landing-page .intro-canvas h1 { font-size:clamp(3.8rem,7.4vw,7rem); line-height:1.06; margin-bottom:22px; }
+.landing-page .intro-capability { max-width:36ch; margin:0 auto 16px; font:450 clamp(1.35rem,2.15vw,2rem)/1.4 var(--sans); letter-spacing:-.025em; color:var(--site-ink); }
+.landing-page .intro-location { margin:0 auto 28px; font:400 1rem/1.5 var(--sans); color:var(--site-slate); }
+.landing-page .intro-work-link { min-height:50px; padding:14px 26px; }
+@media(min-width:1000px) and (min-height:800px) {
+ .home-curated.landing-page .home-identity-hero { transform:translateY(-24px); }
+}
+@media(max-width:600px) {
+ .home-curated.landing-page .home-identity-hero { padding-block:24px 36px; }
+ .landing-page .intro-canvas .heatmap-portrait { width:min(100%,300px); }
+ .home-curated.landing-page .intro-canvas h1 { font-size:clamp(2.9rem,11vw,4rem); margin-bottom:20px; }
+ .landing-page .intro-capability { font-size:clamp(1.2rem,4.9vw,1.5rem); max-width:29ch; }
+ .landing-page .hero-desktop-break { display:none; }
+ .landing-page .intro-location { font-size:.9rem; margin-bottom:24px; }
+}
+
+/* Web projects share one grid even when their default showcase sections differ. */
+.work-page .web-project-grid:not([hidden]) { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:28px; align-items:stretch; margin-top:24px; }
+.home-curated .web-project-grid > [data-card] { padding:28px; background:var(--card-colour); border:1px solid #ffffff50; border-radius:var(--portfolio-radius); box-shadow:var(--portfolio-shadow); margin:0; min-width:0; display:flex; flex-direction:column; }
+.web-project-grid .inline-thumbnail { width:100%; aspect-ratio:800 / 474; height:auto; margin-bottom:24px; }
+.web-project-grid .showreel-video { width:100%; height:100%; object-fit:contain; }
+.web-project-grid .project-card-actions,.web-project-grid .collection-meta { margin-top:auto; padding-top:20px; }
+.web-project-grid .collection-heading { margin-top:0; }
+@media(max-width:700px) {
+ .work-page .web-project-grid:not([hidden]) { grid-template-columns:1fr; gap:24px; }
+ .home-curated .web-project-grid > [data-card] { padding:22px; }
+}
+.home-curated .web-project-grid > [data-card]:nth-child(n) { grid-column:auto; grid-row:auto; }
