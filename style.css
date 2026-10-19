@@ -3290,3 +3290,59 @@ body[data-page="home"] .footer-bottom { margin-top:0; padding-top:20px; }
 @media(max-width:600px) { .live-project-button,.home-curated [data-card] .live-project-button { font-size:1rem; padding:12px 18px; gap:14px; } .project-card-actions { flex-wrap:wrap; } }
 @media(prefers-reduced-motion:reduce) { .live-project-button,.home-curated [data-card] .live-project-button { transition:none; } .live-project-button:hover,.home-curated [data-card] .live-project-button:hover { transform:none; } }
 @media(forced-colors:active) { .live-project-button,.home-curated [data-card] .live-project-button { background:ButtonFace; color:ButtonText; border-color:ButtonText; box-shadow:none; } }
+
+/* Crisp digital palette: neutral surfaces, deep petrol and clear teal actions. */
+@media (forced-colors:none) {
+ :root {
+  --site-ink:#20282c;
+  --site-slate:#48565d;
+  --site-panel:#f6f8f7;
+  --site-border:#bcc7cb;
+  --site-coral:#078176;
+  --site-coral-text:#006b62;
+  --card-sky:#244c5b;
+  --card-mint:#c4d1cf;
+  --card-ice:#dce2e3;
+  --card-denim:#b6c6ce;
+  --card-sea:#a6bfc2;
+  --pop-cyan:#38d5c4;
+  --pop-mint:#61cf9b;
+  --pop-blue:#75b6ee;
+  --pop-coral:#ff886b;
+  --pop-peach:#f5ac74;
+  --portfolio-shadow:0 4px 14px -10px #182c3640;
+ }
+ body { background:#f6f8f7; color:var(--site-ink); }
+ body::before { background:#f6f8f7; animation:none; }
+ body::after { opacity:.32; }
+ .home-curated .work-filters button { background:#f6f8f7; border-color:#aab9bf; box-shadow:none; }
+ .home-curated .work-filters button:hover { background:#dce6e4; box-shadow:none; }
+ .home-curated .work-filters button[aria-pressed="true"],
+ .home-curated .work-filters button[aria-pressed="true"]:hover { background:#244c5b; border-color:#244c5b; color:#fff; box-shadow:none; }
+ .header .personal-nav a:hover,.header .personal-nav a[aria-current="page"]:hover { background:#e5ecea; }
+ .intro-work-link,.landing-page .intro-work-link,.cv-download,.contact-form button { background:#00786e; color:#fff; box-shadow:none; }
+ .intro-work-link span { color:inherit; }
+ .intro-work-link:hover,.landing-page .intro-work-link:hover,.cv-download:hover,.contact-form button:hover { background:#005d56; color:#fff; }
+ .home-curated [data-card="doitnow"] .showcase-caption,
+ .home-curated [data-card="doitnow"] .showcase-caption h3,
+ .home-curated [data-card="doitnow"] .showcase-caption p,
+ .home-curated [data-card="doitnow"] .lead-product-topline { color:#fff; }
+ .home-curated [data-card="doitnow"] .live-project-button { background:#fff; color:#173d49; border-color:#fff; }
+ .home-curated [data-card="doitnow"] .live-project-button > span { color:#00786e; }
+ .home-curated [data-card="doitnow"] .live-project-button:hover { background:#e8f2ef; color:#173d49; }
+ .live-project-button,.home-curated [data-card]:not([data-card="doitnow"]) .live-project-button { background:#202f36; color:#fff; }
+ .live-project-button:hover,.home-curated [data-card]:not([data-card="doitnow"]) .live-project-button:hover { background:#005d56; color:#fff; }
+ .about-bio,.cv-card.cv-profile { background:#244c5b; color:#fff; }
+ .about-bio :is(h2,p),.cv-card.cv-profile :is(h2,p) { color:#fff; }
+ .about-separated .about-photography { background:#e6eae8; }
+ .contact-links > a { background:#eef2f0; border-color:#aab9bf; }
+ .contact-links > a:hover { background:#d4e2dc; }
+ .cv-contact-links a { background:#fff; color:#20282c; }
+ .cv-contact-links a:hover { background:#d4e2dc; }
+ .contact-form input:not([type="hidden"]),.contact-form textarea { background:#fff; border-color:#84999f; }
+ .header > .back-to-top:hover { background:#d4e2dc; }
+}
+@media (forced-colors:none) {
+ .about-building .intro-work-link,.about-bio .intro-work-link { background:#00786e; color:#fff; }
+ .about-building .intro-work-link:hover,.about-bio .intro-work-link:hover { background:#005d56; color:#fff; }
+}
