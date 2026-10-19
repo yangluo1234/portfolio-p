@@ -3839,3 +3839,36 @@ body[data-page="home"] #footer .footer-bottom { border-top:1px solid var(--site-
 .type-landing .type-action p { margin:0; }
 .type-landing .type-action .intro-work-link { margin:0 0 0 auto; }
 @media(max-width:700px) { .type-landing .type-action { padding-left:5%; flex-wrap:wrap; gap:20px; } }
+
+/* Desktop composition calibrated at normal (100%) browser zoom. */
+@media(min-width:901px) {
+ .section-shell,.header,.case-cover.doitnow-case-cover { width:calc(100% - 160px); max-width:1280px; margin-inline:auto; }
+ .case-cover:not(.doitnow-case-cover) { max-width:1280px; }
+ .home-curated.type-landing h1 { font-size:clamp(3.25rem,6.2vw,5.5rem); }
+ .type-portrait { width:min(54%,620px); left:25%; top:-8px; }
+ .home-curated.type-landing h1 { padding-top:250px; }
+ .type-stage { min-height:560px; }
+ .home-curated .supporting-projects .project-info h3,.home-curated .collection-heading h3 { font-size:clamp(1.5rem,2vw,1.85rem); }
+}
+@media(min-width:1500px) {
+ .section-shell,.header,.case-cover.doitnow-case-cover { width:calc(100% - 200px); }
+ .home-curated.type-landing h1 { padding-top:270px; }
+ .type-stage { min-height:590px; }
+}
+
+/* Three stages of the app share one compact featured cover. */
+.home-curated .lead-product.showcase-feature { display:block; padding:28px 36px; }
+.home-curated .showcase-feature .product-cover-composition { display:flex; justify-content:center; align-items:flex-start; gap:clamp(24px,5vw,64px); padding:0; }
+.home-curated .showcase-feature .product-still-window,
+.home-curated .showcase-feature .product-motion-window { width:clamp(140px,15vw,185px); height:auto; margin:0; transform:none; flex:0 1 185px; }
+.home-curated .showcase-feature .showcase-caption { display:flex; flex-direction:row; align-items:center; justify-content:space-between; gap:24px; padding-top:24px; }
+.home-curated .showcase-feature h3 { font-size:clamp(2rem,3vw,2.75rem); margin:6px 0 10px; }
+.home-curated .showcase-feature .showcase-caption p { max-width:54ch; font-size:1rem; margin:0; }
+.home-curated .showcase-feature .project-tool-labels { margin-top:12px; }
+@media(max-width:700px) {
+ .home-curated .lead-product.showcase-feature { padding:24px 20px; }
+ .home-curated .showcase-feature .product-cover-composition { gap:12px; }
+ .home-curated .showcase-feature .product-still-window,.home-curated .showcase-feature .product-motion-window { display:block; width:calc((100% - 24px)/3); flex:1 1 0; min-width:0; padding:18px 4px 8px; border-radius:20px; }
+ .home-curated .showcase-feature .product-still-window img,.home-curated .showcase-feature .product-motion-window video { border-radius:10px; }
+ .home-curated .showcase-feature .showcase-caption { flex-wrap:wrap; gap:16px; padding-top:20px; }
+}
